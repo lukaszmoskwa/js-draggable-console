@@ -12,7 +12,34 @@
 	<body>
 		<div class="container">
 			<h1>Test page</h1>
+			<input type="submit" name="top" id="ajaxbutton" value="Ajax" style="width: 50%"><br><br>
+			<input type="submit" name="top" id="warnbutton" value="Warning" style="width: 50%"><br><br>
+			<input type="submit" name="top" id="logbutton" value="Log" style="width: 50%"><br><br>
+			<input type="submit" name="top" id="errorbutton" value="Error" style="width: 50%">
 		</div>
 	</body>
 	<script type="text/javascript" src="./js/js-draggable-console.js"></script>
+	<script type="text/javascript">
+		$("#ajaxbutton").on("click", function(){
+			var data = "";
+			$.ajax({
+			    type: 'POST',
+			    url: 'loginCheck',
+			    data: data,
+			    dataType: 'json',
+			    error: function(req, err){ 
+			    	JDC.ajax("example network error!");
+			    }
+			});
+		});
+		$("#warnbutton").on("click", function(){
+			JDC.warn("This is a warning..");
+		});
+		$("#errorbutton").on("click", function(){
+			JDC.error("This is an error!");
+		});
+		$("#logbutton").on("click", function(){
+			JDC.log("This is a log.");
+		});
+	</script>
 </html>
