@@ -3,7 +3,7 @@
 ## What?
 
 This is a simple script that will display a draggable circle on your web page. When you click it, it will display a small window
-with a console.
+with a console. Used for debug purpose.
 
 ## Why? 
 
@@ -20,17 +20,27 @@ There is no point in having 2 consoles (the browser one and this one together). 
 
 Just download the script you can find in the ./js/ folder and include it in your website.
 
-To print anything on your console, instead of
+To print anything on your console, you can use 
 
 ```javascript
-console.log("something");
+JDC.log("content");
+JDC.warn("content");
+JDC.error("content");
+JDC.info("content");
 ```
-
-just use 
+or just keep using 
 
 ```javascript
-JDC.alert("something");
+console.log("content");
+console.warn("content");
+console.error("content");
 ```
+
+It is also possible to write directly in the input some JS code and execute it.
+
+## Screenshot
+
+![](https://i.imgur.com/xLIDknk.png)
 
 ## License
 
