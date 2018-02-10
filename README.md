@@ -40,8 +40,14 @@ It is also possible to write directly in the input some JS code and execute it.
 
 ## Screenshot
 
-*coming soon*
-![]()
+### Demo page
+![](https://i.imgur.com/1tulz1j.png)
+
+### Console
+![](https://i.imgur.com/Uh8he3f.png)
+
+### Demo logs
+![](https://i.imgur.com/C3nzCbG.png)
 
 ## License
 
