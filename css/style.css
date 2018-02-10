@@ -39,6 +39,10 @@ h4 {
 	right: 0;
 	margin: auto;
 	overflow-y: scroll;
+	cursor: move;
+	font-size: 13px;
+    font-family: Menlo, monospace;
+    line-height: 1.3em;
 }
 
 .row {
@@ -62,6 +66,7 @@ h4 {
 	width: 100%; 
 	position: absolute; 
 	bottom:0;
+	cursor: text;
 }
 
 #js-draggable-button {
@@ -73,6 +78,7 @@ h4 {
 	z-index: 999;
 	border-radius: 0px;
 	left: 2%;
+	cursor: move;
 }
 
 #js-draggable-button:before {
