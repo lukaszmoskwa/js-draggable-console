@@ -14,11 +14,34 @@
  * Js-Draggable-Console
  */
 /**
+ * The draggable console
+ * Creates the DOM element, append it and make it draggable.
+ * @type {Object}
+ */
+const dragConsole = 
+	'<div class="container-fluid">'																															+
+		'<div class="row">'																																				+
+			'<div class="col-xl-12">'																																+
+				'<div id="js-draggable-console" class="console">'																			+
+					'<div id="console-title">'																													+
+						'<h4>Js-Draggable-Console</h4>'																										+
+							'<div id="console-close-icon">'																									+
+								'<i class="far fa-times-circle"></i>'																					+
+							'</div>'																																				+
+						'</div>'																																					+
+					'<input type="text" placeholder="> Enter your command here..." id="js-input-text">' +
+				'</div>'																																							+
+			'</div>'																																								+
+		'</div>'																																									+
+	'</div>';
+$("body").append(dragConsole);
+$("#js-draggable-console").draggable();
+/**
  * The draggable button that opens the console.
  * Creates the DOM element, append it and make it draggable.
  * @type {Object}
  */
-const dragButton = `<div id="js-draggable-button"></div>`;
+const dragButton = '<div id="js-draggable-button"></div';
 $("body").append(dragButton);
 $("#js-draggable-button").draggable();
 
@@ -65,11 +88,37 @@ const console = {
 	info: (param) => JDC.info(param),
 };
 
-Object.assign(window.console, console);
+window.console = console;
 
-$('#js-input-text').on('keydown', (e) => {
+const clear = () => {
+	const dragConsole = $("#js-draggable-console");
+	/**
+	 * Checks if there are items to clear
+	 */
+	if (dragConsole.children().length < 3) {
+		JDC.info('nothing to clear.');
+		setTimeout(() => {
+			dragConsole.children(".jdc-message").remove();
+		}, (1500));
+		return;
+	}
+	dragConsole.children(".jdc-message").remove();
+}
+
+$("#js-input-text").on("keydown", (e) => {
   if (e.which === 9 || e.which === 13) {
-    const command = $("#js-input-text").val();
-    eval(command);
+  	const input = $("#js-input-text");
+    const command = input.val();
+    input.val("");
+    if (command === 'clear') {
+    	clear();
+    	return;
+    }
+    JDC.info(command);
+    try {
+    	eval(command);
+    } catch(error) {
+    	JDC.error(error);
+    } 
   }
 });
