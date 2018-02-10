@@ -40,7 +40,7 @@ It is also possible to write directly in the input some JS code and execute it.
 
 ## Screenshot
 
-![](https://i.imgur.com/xLIDknk.png)
+![](https://i.imgur.com/bhn3Yfx.png)
 
 ## License
 
