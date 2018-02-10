@@ -45,3 +45,8 @@ It is also possible to write directly in the input some JS code and execute it.
 ## License
 
 Created for a learning purpose, free to use anywhere.
+
+## TODO
+
+Clear console with a command
+Handle errors
