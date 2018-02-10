@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "FontAwesome";
+  font-weight: bold;
+  font-style : normal;
+         src : url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0");
+         src : url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"),
+               url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"),
+               url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"),
+               url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"),
+               url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+}
+
+button[type='button'] {
+	width: 50%;
+}
+
+.jdc-message {
+	margin:0
+}
+
+h4 {
+	margin:0; 
+	padding-top:5px; 
+	padding-bottom:5px; 
+	padding-left:5px;
+	display: inline;
+}
+
+.console {
+	display: none;
+	height: 70vh;
+	width: 80vw;
+	background-color: rgba(0,0,0,0.7);
+	border: 4px solid #0060FF;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	overflow-y: scroll;
+	cursor: move;
+	font-size: 13px;
+    font-family: Menlo, monospace;
+    line-height: 1.3em;
+}
+
+.row {
+	padding-bottom: 5px;
+}
+
+#console-title {
+	width: 100%;
+	background-color: #0060FF;
+	color: white;
+}
+
+#console-close-icon {
+	position: relative;
+	float: right;
+	margin-right: 10px;
+	margin-top: 3px;
+}
+
+#js-input-text {
+	width: 100%; 
+	position: absolute; 
+	bottom:0;
+	cursor: text;
+}
+
+#js-draggable-button {
+	position: relative;
+	height: 35px;
+	width: 35px;
+	background-color: transparent;
+	border: solid 2px #000;
+	z-index: 999;
+	border-radius: 0px;
+	left: 2%;
+	cursor: move;
+}
+
+#js-draggable-button:before {
+	font-family: "FontAwesome";
+	text-align: center;
+	padding-left: 5px;
+	content: '\f120';
+}

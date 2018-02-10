@@ -4,42 +4,80 @@
 		<title>Test page</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		<link rel="stylesheet" href="./css/style.css">
 	</head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<body>
-		<div class="container">
-			<h1>Test page</h1>
-			<input type="submit" name="top" id="ajaxbutton" value="Ajax" style="width: 50%"><br><br>
-			<input type="submit" name="top" id="warnbutton" value="Warning" style="width: 50%"><br><br>
-			<input type="submit" name="top" id="logbutton" value="Log" style="width: 50%"><br><br>
-			<input type="submit" name="top" id="errorbutton" value="Error" style="width: 50%">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-12">
+					<h1>Test page</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xl-12">
+					<p>Demo: click on a button and open the console to see it's output or open the console and write your own command.</p>
+					<p>Type <code>clear</code> to clear the console.</p>
+				</div>
+			</div>
+			<div class="row">
+    		<div class="col-xl-12">
+    			<button type="button" class="btn btn-secondary" id="ajaxbutton">AJAX Error</button>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-xl-12">
+					<button type="button" class="btn btn-warning" id="warnbutton">Warning</button>
+				</div>
+			</div>
+			<div class="row">
+    		<div class="col-xl-12">
+					<button type="button" class="btn btn-info" id="infobutton">Info</button>
+				</div>
+			</div>
+			<div class="row">
+    		<div class="col-xl-12">
+					<button type="button" class="btn btn-primary" id="logbutton">Log</button>
+				</div>
+			</div>
+			<div class="row">
+    		<div class="col-xl-12">
+					<button type="button" class="btn btn-danger" id="errorbutton">Error</button>
+				</div>
+			</div>
 		</div>
+		<footer>
+			<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<script type="text/javascript" src="./js/js-draggable-console.js"></script>
+			<script type="text/javascript">
+				$("#ajaxbutton").on("click", function(){
+					var data = "";
+					$.ajax({
+					    type: 'POST',
+					    url: 'fakeRequestURL',
+					    data: data,
+					    dataType: 'json',
+					    error: function(req, err){ 
+					    	JDC.ajax("example network error!");
+					    }
+					});
+				});
+				$("#warnbutton").on("click", function(){
+					JDC.warn("This is a warning.");
+				});
+				$("#errorbutton").on("click", function(){
+					JDC.error("This is an error.");
+				});
+				$("#logbutton").on("click", function(){
+					JDC.log("This is a log.");
+				});
+				$("#infobutton").on("click", function(){
+					JDC.info("This is a info.");
+				});
+			</script>
+		</footer>
 	</body>
-	<script type="text/javascript" src="./js/js-draggable-console.js"></script>
-	<script type="text/javascript">
-		$("#ajaxbutton").on("click", function(){
-			var data = "";
-			$.ajax({
-			    type: 'POST',
-			    url: 'loginCheck',
-			    data: data,
-			    dataType: 'json',
-			    error: function(req, err){ 
-			    	JDC.ajax("example network error!");
-			    }
-			});
-		});
-		$("#warnbutton").on("click", function(){
-			JDC.warn("This is a warning..");
-		});
-		$("#errorbutton").on("click", function(){
-			JDC.error("This is an error!");
-		});
-		$("#logbutton").on("click", function(){
-			JDC.log("This is a log.");
-		});
-	</script>
 </html>

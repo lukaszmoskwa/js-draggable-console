@@ -40,8 +40,20 @@ It is also possible to write directly in the input some JS code and execute it.
 
 ## Screenshot
 
-![](https://i.imgur.com/xLIDknk.png)
+### Demo page
+![](https://i.imgur.com/1tulz1j.png)
+
+### Console
+![](https://i.imgur.com/Uh8he3f.png)
+
+### Demo logs
+![](https://i.imgur.com/C3nzCbG.png)
 
 ## License
 
 Created for a learning purpose, free to use anywhere.
+
+## TODO
+
+Clear console with a command
+Handle errors
