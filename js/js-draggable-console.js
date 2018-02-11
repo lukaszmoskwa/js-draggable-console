@@ -119,6 +119,9 @@ $("#js-input-text").on("keydown", (e) => {
     	eval(command);
     } catch(error) {
     	JDC.error(error);
+    	const helpUrl = `https://stackoverflow.com/search?q=[js]+${error}`;
+    	const link = `<a href="${helpUrl}" target="_blank">here</a>`;
+    	JDC.info(`Get help! Click ${link}! (opens in a new page)`);
     } 
   }
 });
