@@ -59,14 +59,16 @@ h4 {
 	position: relative;
 	float: right;
 	margin-right: 10px;
-	margin-top: 3px;
+	margin-top: 1%;
 }
 
 #js-input-text {
 	width: 100%; 
 	position: absolute; 
-	bottom:0;
+	bottom: 0;
 	cursor: text;
+	padding: .500rem .75rem;
+	z-index: 999;
 }
 
 #js-draggable-button {
