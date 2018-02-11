@@ -18,6 +18,30 @@ button[type='button'] {
 	margin:0
 }
 
+.jdc-message-error {
+	color: #dc3545;
+	background-color: #f9dcdf;
+}
+
+.jdc-message-warn {
+	color: black; 
+	background-color: yellow;
+}
+
+.jdc-message-info {
+	color:white;
+}
+
+.jdc-message-log {
+	color: black;
+	background-color: #7CFC00;
+}
+
+.jdc-message-ajax {
+	color: gray;
+	background-color: black;
+}
+
 h4 {
 	margin:0; 
 	padding-top:5px; 
@@ -59,14 +83,16 @@ h4 {
 	position: relative;
 	float: right;
 	margin-right: 10px;
-	margin-top: 3px;
+	margin-top: 4.5px;
 }
 
 #js-input-text {
 	width: 100%; 
 	position: absolute; 
-	bottom:0;
+	bottom: 0;
 	cursor: text;
+	padding: .500rem .75rem;
+	z-index: 999;
 }
 
 #js-draggable-button {
@@ -79,11 +105,6 @@ h4 {
 	border-radius: 0px;
 	left: 2%;
 	cursor: move;
-}
-
-#js-draggable-button:before {
-	font-family: "FontAwesome";
-	text-align: center;
-	padding-left: 5px;
-	content: '\f120';
+	padding-left: 6px;
+  padding-top: 2px;
 }
