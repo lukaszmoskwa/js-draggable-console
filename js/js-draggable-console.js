@@ -41,7 +41,7 @@ $("body").append(dragConsole);
  * Creates the DOM element, append it and make it draggable.
  * @type {Object}
  */
-const dragButton = '<div id="js-draggable-button"></div';
+const dragButton = '<div id="js-draggable-button"><i class="fas fa-terminal"></i></div>';
 $("body").append(dragButton);
 $("#js-draggable-button").draggable();
 
