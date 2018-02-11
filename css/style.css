@@ -18,6 +18,30 @@ button[type='button'] {
 	margin:0
 }
 
+.jdc-message-error {
+	color:black;
+	background-color: red;
+}
+
+.jdc-message-warn {
+	color: black; 
+	background-color: yellow;
+}
+
+.jdc-message-info {
+	color:white;
+}
+
+.jdc-message-log {
+	color: black;
+	background-color: #7CFC00;
+}
+
+.jdc-message-ajax {
+	color: gray;
+	background-color: black;
+}
+
 h4 {
 	margin:0; 
 	padding-top:5px; 

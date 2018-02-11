@@ -35,7 +35,7 @@ const dragConsole =
 		'</div>'																																									+
 	'</div>';
 $("body").append(dragConsole);
-$("#js-draggable-console").draggable();
+//$("#js-draggable-console").draggable();
 /**
  * The draggable button that opens the console.
  * Creates the DOM element, append it and make it draggable.
@@ -74,11 +74,11 @@ $("#console-close-icon").on("click", () => {
 });
 
 const JDC = {
-	log: (param) => $("#js-draggable-console").append("<p class='jdc-message' style='color:black;background-color: #7CFC00;'>LOG ->" + param + "</p>"),
-	warn: (param) => $("#js-draggable-console").append("<p class='jdc-message' style='color:black; background-color:yellow'>WARNING -> " + param + "</p>"),
-	info: (param) => $("#js-draggable-console").append("<p class='jdc-message' style='color:white;'>INFO ->" + param + "</p>"),
-	error: (param) => $("#js-draggable-console").append("<p class='jdc-message' style='color:black; background-color:red'>ERROR ->" + param + "</p>"),
-	ajax: (param) => $("#js-draggable-console").append("<p class='jdc-message' style='color:gray; background-color:black'>AJAX error -> " + param + "</p>"),
+	log: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-log'>LOG ->" + param + "</p>"),
+	warn: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-warn'>WARNING -> " + param + "</p>"),
+	info: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-info'>INFO ->" + param + "</p>"),
+	error: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-error'>ERROR ->" + param + "</p>"),
+	ajax: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-ajax'>AJAX error -> " + param + "</p>"),
 }
 
 const console = {
