@@ -1,17 +1,5 @@
-@font-face {
-  font-family: "FontAwesome";
-  font-weight: bold;
-  font-style : normal;
-         src : url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0");
-         src : url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"),
-               url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"),
-               url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"),
-               url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"),
-               url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
-}
-
 button[type='button'] {
-	width: 50%;
+	width: 100%;
 }
 
 .jdc-message {
@@ -63,10 +51,9 @@ h4 {
 	right: 0;
 	margin: auto;
 	overflow-y: scroll;
-	cursor: move;
 	font-size: 13px;
-    font-family: Menlo, monospace;
-    line-height: 1.3em;
+  font-family: Menlo, monospace;
+  line-height: 1.3em;
 }
 
 .row {
