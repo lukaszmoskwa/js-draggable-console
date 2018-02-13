@@ -19,22 +19,36 @@
  * @type {Object}
  */
 const dragConsole = 
-	'<div class="container-fluid">'																															+
-		'<div class="row">'																																				+
-			'<div class="col-xl-12">'																																+
-				'<div id="js-draggable-console" class="console">'																			+
-					'<div id="console-title">'																													+
-						'<h4>Js-Draggable-Console</h4>'																										+
-							'<div id="console-close-icon">'																									+
-								'<i class="far fa-times-circle"></i>'																					+
-							'</div>'																																				+
-						'</div>'																																					+
-					'<input type="text" placeholder="> Enter your command here..." id="js-input-text">' +
-				'</div>'																																							+
-			'</div>'																																								+
-		'</div>'																																									+
-	'</div>';
+  '<div class="container-fluid">'																																	
++		'<div class="row">'																																						
++			'<div class="col-xl-12">'																																		
++				'<div id="js-draggable-console" class="window">'																					
++					'<div class="topbar">'																																	
++           '<div class="stoplight">'																															
++             '<span id="console-close-icon" class="close"></span>'																
++           '</div>'																																							
++						'<span class="title">JS Draggable Console<span>'																																							
++					'</div>'																																								
++					'<div class="content">'																																	
++						'<div class="window-body">'																														
++							'<table id="messages">'																															
++							'</table>'																																					
++							'<table class="cmd">'																																								
++								'<tr>'																																								
++									'<th class="placeholder">&gt;</th>'																		
++									'<th class="input-cmd">'																																							
++										'<input type="text" placeholder="Enter your command here..." id="js-input-text">' 
++									'</th>'
++								'<tr>'							
++							'</table>'
++						'</div>'																																							
++					'</div>'																																								
++				'</div>'																																									
++			'</div>'																																										
++		'</div>'																																											
++	'</div>';
 $("body").append(dragConsole);
+// If draggable touches on input are not recognized...
 //$("#js-draggable-console").draggable();
 /**
  * The draggable button that opens the console.
@@ -73,12 +87,22 @@ $("#console-close-icon").on("click", () => {
 	$("#js-draggable-console").hide(500);
 });
 
+const HTMLMessages = {
+	log: (param) => '<tr><th class="icon"><i class="fas fa-terminal"></i></th><th class="message"><span class="jdc-message jdc-message-log">' + param + '</span></th></tr>',
+	warn: (param) => '<tr><th class="icon icon-warn"><i class="fas fa-exclamation-triangle"></i></th><th class="message"><span class="jdc-message jdc-message-warn">' + param + '</span></th></tr>',
+	info: (param) => '<tr><th class="icon"><i class="fas fa-info-circle"></i></th><th class="message"><span class="jdc-message jdc-message-info">' + param + '</span></th></tr>',
+	err: (param) => '<tr><th class="icon icon-error"><i class="fas fa-times-circle"></i></th><th class="message"><span class="jdc-message jdc-message-error">' + param + '</span></th></tr>',
+	ajax: (param) => '<tr><th class="icon"><i class="fas fa-exclamation"></i></th><th class="message"><span class="jdc-message jdc-message-ajax">' + param + '</span></th></tr>',
+	inspect: (param) => '<tr><th class="icon"><i class="fas fa-search"></i></th><th class="message"><span class="jdc-message">' + param + '</span></th></tr>',
+}
+
 const JDC = {
-	log: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-log'>LOG ->" + param + "</p>"),
-	warn: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-warn'>WARNING -> " + param + "</p>"),
-	info: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-info'>INFO ->" + param + "</p>"),
-	error: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-error'>ERROR ->" + param + "</p>"),
-	ajax: (param) => $("#js-draggable-console").append("<p class='jdc-message jdc-message-ajax'>AJAX error -> " + param + "</p>"),
+	log: (param) => $("#messages").append(HTMLMessages.log(param)),
+	warn: (param) => $("#messages").append(HTMLMessages.warn(param)),
+	info: (param) => $("#messages").append(HTMLMessages.info(param)),
+	error: (param) => $("#messages").append(HTMLMessages.err(param)),
+	ajax: (param) => $("#messages").append(HTMLMessages.ajax(param)),
+	inspect: (param) => $("#messages").append(HTMLMessages.inspect(param)),
 }
 
 const console = {
@@ -86,26 +110,22 @@ const console = {
 	warn: (param) => JDC.warn(param),
 	error: (param) => JDC.error(param),
 	info: (param) => JDC.info(param),
+	inspect: (param) => JDC.inspect(JSON.stringify(param, null, 4)),
 };
 
 window.console = console;
 
 const clear = () => {
-	const dragConsole = $("#js-draggable-console");
-	/**
-	 * Checks if there are items to clear
+	/** 
+	 * Removes all the rows of the messages table 
+	 * If the table is empty, does nothing.
 	 */
-	if (dragConsole.children().length < 3) {
-		JDC.info('nothing to clear.');
-		setTimeout(() => {
-			dragConsole.children(".jdc-message").remove();
-		}, (1500));
-		return;
-	}
-	dragConsole.children(".jdc-message").remove();
+	const messages = $("#messages tr");
+	messages.length < 1 ? true : messages.remove();
 }
 
 $("#js-input-text").on("keydown", (e) => {
+	"use strict";
   if (e.which === 9 || e.which === 13) {
   	const input = $("#js-input-text");
     const command = input.val();
@@ -118,10 +138,9 @@ $("#js-input-text").on("keydown", (e) => {
     try {
     	eval(command);
     } catch(error) {
-    	JDC.error(error);
     	const helpUrl = `https://stackoverflow.com/search?q=[js]+${error}`;
     	const link = `<a href="${helpUrl}" target="_blank">here</a>`;
-    	JDC.info(`Get help! Click ${link}! (opens in a new page)`);
+    	JDC.error(`${error}. [Get help! Click ${link}! (opens in a new page)]`);
     } 
   }
 });
